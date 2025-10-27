@@ -1,0 +1,190 @@
+/* 1. Reset Básico e Variáveis */
+:root {
+    --cor-primaria: #0077b6;
+    --cor-secundaria: #00b4d8;
+    --cor-texto: #333;
+    --cor-fundo: #f4f4f4;
+    --cor-branco: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth; /* Rolagem suave ao clicar nos links do menu */
+}
+
+/* 2. Estilos Gerais */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: var(--cor-primaria);
+}
+
+/* 3. Cabeçalho (Header) */
+header {
+    background-color: var(--cor-branco);
+    padding: 20px 0;
+    border-bottom: 1px solid #ddd;
+    position: sticky; /* Efeito de "grudar" no topo */
+    top: 0;
+    z-index: 100;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    color: var(--cor-primaria);
+    font-size: 24px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Espaço entre os itens do menu */
+}
+
+header nav a {
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+header nav a:hover {
+    color: var(--cor-secundaria);
+}
+
+/* 4. Seção Hero */
+.hero {
+    background-image: url('https://via.placeholder.com/1500x500.png?text=Imagem+de+Turismo');
+    background-size: cover;
+    background-position: center;
+    color: var(--cor-branco);
+    text-align: center;
+    padding: 100px 20px;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero h2 {
+    font-size: 48px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra no texto para legibilidade */
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.btn {
+    background-color: var(--cor-primaria);
+    color: var(--cor-branco);
+    padding: 12px 25px;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: var(--cor-secundaria);
+}
+
+/* 5. Seções (Padrão) */
+.destinos, .sobre {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.destinos h3, .sobre h3 {
+    font-size: 32px;
+    margin-bottom: 40px;
+    color: var(--cor-texto);
+}
+
+/* 6. Grid de Destinos (Cards) */
+.grid-destinos {
+    display: grid;
+    /* Cria colunas responsivas:
+      - Tenta encaixar o máximo de colunas de 300px.
+      - Se não couber, quebra a linha.
+      - O "1fr" faz com que as colunas se estiquem para preencher o espaço.
+    */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.card-destino {
+    background-color: var(--cor-branco);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden; /* Garante que a imagem não vaze */
+    text-align: left;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-destino:hover {
+    transform: translateY(-5px); /* Efeito de "levantar" o card */
+    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.card-destino img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Faz a imagem cobrir o espaço sem distorcer */
+}
+
+.card-destino h4 {
+    font-size: 20px;
+    color: var(--cor-primaria);
+    margin: 20px;
+}
+
+.card-destino p {
+    font-size: 16px;
+    color: #666;
+    margin: 0 20px 20px 20px;
+    line-height: 1.5;
+}
+
+/* 7. Seção Sobre */
+.sobre {
+    background-color: var(--cor-fundo);
+}
+
+.sobre p {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    color: #555;
+}
+
+/* 8. Rodapé (Footer) */
+footer {
+    background-color: var(--cor-texto);
+    color: var(--cor-branco);
+    text-align: center;
+    padding: 30px 0;
+    margin-top: 40px;
+}
