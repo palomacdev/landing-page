@@ -1,190 +1,160 @@
-/* 1. Reset Básico e Variáveis */
+/* 1. Reset Básico e Definição de Variáveis (Fontes e Cores) */
 :root {
-    --cor-primaria: #0077b6;
-    --cor-secundaria: #00b4d8;
-    --cor-texto: #333;
-    --cor-fundo: #f4f4f4;
+    /* Cores */
+    --cor-primaria: #005f73; /* Azul escuro (títulos, header) */
+    --cor-secundaria: #0a9396; /* Azul médio (subtítulos) */
+    --cor-fundo: #f8f9fa;     /* Fundo levemente cinza */
+    --cor-texto: #343a40;    /* Texto principal (escuro) */
     --cor-branco: #ffffff;
+    
+    /* Fontes (Recomendação anterior) */
+    --fonte-titulo: 'Poppins', sans-serif;
+    --fonte-corpo: 'Lato', sans-serif;
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
 }
 
-html {
-    scroll-behavior: smooth; /* Rolagem suave ao clicar nos links do menu */
+/* 2. Estilos Globais (Corpo e Container) */
+body {
+    font-family: var(--fonte-corpo);
+    line-height: 1.6;
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto);
 }
 
-/* 2. Estilos Gerais */
 .container {
-    max-width: 1100px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 0 20px;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
+/* Requisito: Bordas arredondadas nas imagens */
+/* Aplicando em todas as imagens dentro do conteúdo principal */
+main img {
+    width: 100%;
     display: block;
+    border-radius: 8px; /* BORDAS ARREDONDADAS */
 }
 
-a {
-    text-decoration: none;
-    color: var(--cor-primaria);
-}
-
-/* 3. Cabeçalho (Header) */
+/* 3. Estilização do Header (Título Principal) */
 header {
-    background-color: var(--cor-branco);
-    padding: 20px 0;
-    border-bottom: 1px solid #ddd;
-    position: sticky; /* Efeito de "grudar" no topo */
-    top: 0;
-    z-index: 100;
-}
-
-header .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-header .logo {
-    color: var(--cor-primaria);
-    font-size: 24px;
-}
-
-header nav ul {
-    list-style: none;
-    display: flex;
-    gap: 20px; /* Espaço entre os itens do menu */
-}
-
-header nav a {
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-header nav a:hover {
-    color: var(--cor-secundaria);
-}
-
-/* 4. Seção Hero */
-.hero {
-    background-image: url('https://via.placeholder.com/1500x500.png?text=Imagem+de+Turismo');
-    background-size: cover;
-    background-position: center;
-    color: var(--cor-branco);
-    text-align: center;
-    padding: 100px 20px;
-    min-height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-
-.hero h2 {
-    font-size: 48px;
-    margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5); /* Sombra no texto para legibilidade */
-}
-
-.hero p {
-    font-size: 20px;
-    margin-bottom: 30px;
-}
-
-.btn {
     background-color: var(--cor-primaria);
     color: var(--cor-branco);
-    padding: 12px 25px;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-}
-
-.btn:hover {
-    background-color: var(--cor-secundaria);
-}
-
-/* 5. Seções (Padrão) */
-.destinos, .sobre {
-    padding: 60px 0;
+    padding: 25px 0;
     text-align: center;
 }
 
-.destinos h3, .sobre h3 {
-    font-size: 32px;
-    margin-bottom: 40px;
-    color: var(--cor-texto);
+header h1 {
+    font-family: var(--fonte-titulo);
+    font-size: 3rem; /* 48px - REQUISITO: Destacar título principal */
+    font-weight: 700;
 }
 
-/* 6. Grid de Destinos (Cards) */
-.grid-destinos {
+/* 4. Espaçamento entre Seções */
+section {
+    padding: 40px 0; /* REQUISITO: Espaçamentos (margem/padding) */
+}
+
+/* 5. Estilização das Seções */
+
+/* Introdução e Atrações (Títulos e Parágrafos) */
+.introducao, .atracoes {
+    text-align: center;
+}
+
+.introducao h2, .atracoes h2 {
+    font-family: var(--fonte-titulo);
+    font-size: 2rem; /* 32px */
+    color: var(--cor-secundaria);
+    margin-bottom: 15px;
+}
+
+.introducao p, .atracoes > .container > p {
+    font-size: 1.1rem; /* 18px */
+    max-width: 800px;
+    margin: 0 auto 30px auto; /* Centraliza o parágrafo */
+}
+
+/* Imagem Principal e Legenda */
+.imagem-principal {
+    padding-top: 0; /* Remove o padding de cima para colar na intro */
+}
+
+.imagem-principal figure {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.imagem-principal figcaption {
+    font-size: 0.9rem; /* 14px */
+    color: #555;
+    text-align: center;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+/* Grid de Atrações */
+.grid-atracoes {
     display: grid;
-    /* Cria colunas responsivas:
-      - Tenta encaixar o máximo de colunas de 300px.
-      - Se não couber, quebra a linha.
-      - O "1fr" faz com que as colunas se estiquem para preencher o espaço.
-    */
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+    grid-template-columns: 1fr 1fr 1fr; /* 3 colunas */
+    gap: 25px; /* Espaço entre os cards */
 }
 
-.card-destino {
+.atracao-card {
     background-color: var(--cor-branco);
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
     overflow: hidden; /* Garante que a imagem não vaze */
-    text-align: left;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
-.card-destino:hover {
-    transform: translateY(-5px); /* Efeito de "levantar" o card */
-    box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+.atracao-card:hover {
+    transform: translateY(-5px);
 }
 
-.card-destino img {
-    width: 100%;
+.atracao-card img {
     height: 200px;
     object-fit: cover; /* Faz a imagem cobrir o espaço sem distorcer */
+    border-radius: 8px 8px 0 0; /* Arredonda só em cima, já que está no card */
 }
 
-.card-destino h4 {
-    font-size: 20px;
+.atracao-card h3 {
+    font-family: var(--fonte-titulo);
+    font-size: 1.25rem; /* 20px */
     color: var(--cor-primaria);
-    margin: 20px;
+    margin: 15px;
 }
 
-.card-destino p {
-    font-size: 16px;
-    color: #666;
-    margin: 0 20px 20px 20px;
-    line-height: 1.5;
+.atracao-card p {
+    font-size: 1rem; /* 16px */
+    padding: 0 15px 20px 15px;
 }
 
-/* 7. Seção Sobre */
-.sobre {
-    background-color: var(--cor-fundo);
-}
-
-.sobre p {
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.6;
-    color: #555;
-}
-
-/* 8. Rodapé (Footer) */
+/* 6. Estilização do Rodapé */
 footer {
-    background-color: var(--cor-texto);
+    background-color: #343a40; /* Cor escura do texto */
     color: var(--cor-branco);
-    text-align: center;
-    padding: 30px 0;
-    margin-top: 40px;
+    text-align: center; /* REQUISITO: Rodapé simples e centralizado */
+    padding: 25px 0;
+    margin-top: 40px; /* REQUISITO: Espaçamento */
+    font-size: 0.9rem;
+}
+
+/* 7. Responsividade (para telas menores) */
+@media (max-width: 768px) {
+    .grid-atracoes {
+        grid-template-columns: 1fr; /* Faz os 3 cards ficarem um embaixo do outro */
+    }
+
+    header h1 {
+        font-size: 2.5rem; /* Diminui o título principal */
+    }
+
+    .introducao h2, .atracoes h2 {
+        font-size: 1.75rem; /* Diminui os subtítulos */
+    }
 }
